@@ -1,6 +1,10 @@
 var fs = require('fs');
 var util = require('util');
-var Transform = require('stream').Transform;
+var stream = require('stream');
+if (!stream.Transform) {
+	stream = require('readable-stream');
+}
+var Transform = stream.Transform;
 var MapReduce = require('../index');
 
 ////////////////////////////////////////////////////////

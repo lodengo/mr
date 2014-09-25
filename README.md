@@ -7,6 +7,7 @@ nodejs map-reduce
     
   usage: world count example  
   ```
+    var fs = require('fs');
   	var worldCounter = new MapReduce({
 		map: function(chunk){		
 			chunk.toString().split(/\W+|\d+/).forEach(function(world){			
@@ -16,7 +17,7 @@ nodejs map-reduce
 		reduce: function(key, values){
 			return this.count(values);
 		},
-		inputs: require('fs').readdirSync('./').map(fs.createReadStream)
+		inputs: fs.readdirSync('./').map(fs.createReadStream)
 	});
 	
 	worldCounter.pipe(process.stdout);
