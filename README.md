@@ -1,7 +1,7 @@
 mr
 ==
 
-nodejs map reduce  
+nodejs map-reduce  
   
   CouchDB-style-like map-reduce:[CouchDB](http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views)
     
@@ -22,6 +22,6 @@ nodejs map reduce
 	worldCounter.pipe(process.stdout);
   ```
   more think:
-  1. do not do reduce job until maps done, but reduce while process and rereduce?
+  1. should do reduce during mapping rather than wait until mapping done?
   2. use nodejs ChildProcess/Cluster fork to do map/reduce job?
   3. for processing and generating large data sets with a parallel, distributed algorithm on a cluster? you may look for [Hadoop](http://hadoop.apache.org/)
