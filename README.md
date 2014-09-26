@@ -18,7 +18,7 @@ nodejs map-reduce
 			return this.count(values);
 		},
 		inputs: fs.readdirSync('./').map(fs.createReadStream),
-		fork: false //false|true, forEach input fork a cluster.worker to do map job or not
+		fork: false //should forEach input fork a cluster.worker to do map job or not
 	});
 	
 	worldCounter.run(function(result){
