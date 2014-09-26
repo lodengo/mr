@@ -3,7 +3,7 @@ mr
 
 nodejs map-reduce  
   
-  CouchDB-style-like map-reduce:[CouchDB](http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views)
+  CouchDB-style-like map-reduce:[CouchDB](http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views) [MapReduce](http://en.wikipedia.org/wiki/MapReduce)
     
   usage: world count example  
   ```
@@ -17,10 +17,13 @@ nodejs map-reduce
 		reduce: function(key, values){
 			return this.count(values);
 		},
-		inputs: fs.readdirSync('./').map(fs.createReadStream)
+		inputs: fs.readdirSync('./').map(fs.createReadStream),
+		fork: false //false|true, forEach input fork a cluster.worker to do map job or not
 	});
 	
-	worldCounter.pipe(process.stdout);
+	worldCounter.run(function(result){
+		console.log(result);
+	});
   ```
   more think:
   1. should do reduce during mapping rather than wait until mapping done?

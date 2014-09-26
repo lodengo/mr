@@ -89,9 +89,14 @@ var statsByStudent = new MapReduce({
 			avg: this.avg(values)
 		};
 	},
-	inputs : inputs
+	inputs : inputs,
+	fork: true
 });
 
-//statsByCourse.pipe(process.stdout);
-statsByStudent.pipe(process.stdout);
+//statsByCourse.run(function(result){
+//	console.log(result);
+//});
+statsByStudent.run(function(result){
+	console.log(result);
+});
 

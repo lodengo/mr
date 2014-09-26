@@ -12,10 +12,13 @@ var worldCounter = new MapReduce({
 	reduce: function(key, values){
 		return this.count(values);
 	},
-	inputs: inputs
+	inputs: inputs,
+	fork: true
 });
 
-worldCounter.pipe(process.stdout);
+worldCounter.run(function(result){
+	console.log(result);
+});
 
 
 
